@@ -5,9 +5,6 @@ const Button = (props) => (
 );
 
 const Statistics = (props) => {
-  if (props.statistics === 0 || isNaN(props.statistics)) {
-    return <p>No feedback given</p>;
-  }
   return (
     <p>
       {props.text} {props.statistics}
@@ -31,18 +28,21 @@ const App = () => {
       <Button handleClick={() => setNeutral(neutral + 1)} text="Neutral" />
       <Button handleClick={() => setBad(bad + 1)} text="Bad" />
       <h2>Statistics</h2>
-      <div>
-        <Statistics text="Good" statistics={good} />
-        <Statistics text="Neutral" statistics={neutral} />
-        <Statistics text="Bad" statistics={bad} />
-        <Statistics text="Reviews" statistics={bad + neutral + good} />
-        <Statistics text="Average" statistics={average()} />
-        <Statistics
-          text="Positive"
-          statistics={(good / (good + bad + neutral)) * 100}
-          append="%"
-        />
-      </div>
+      {!good && !neutral && !bad && <p>No feedback given</p>}
+      {(good || neutral || bad) && (
+        <div>
+          <Statistics text="Good" statistics={good} />
+          <Statistics text="Neutral" statistics={neutral} />
+          <Statistics text="Bad" statistics={bad} />
+          <Statistics text="Reviews" statistics={bad + neutral + good} />
+          <Statistics text="Average" statistics={average()} />
+          <Statistics
+            text="Positive"
+            statistics={(good / (good + bad + neutral)) * 100}
+            append="%"
+          />
+        </div>
+      )}
     </div>
   );
 };

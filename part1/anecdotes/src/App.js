@@ -14,17 +14,20 @@ const App = () => {
   const [votes, setVotes] = useState([0, 0, 0, 0, 0, 0]);
 
   const handleClick = () => {
+    // select next anecdote randomly by index
     let random = Math.floor(Math.random() * anecdotes.length);
     setSelected(random);
   };
 
   const handleVotes = () => {
+    // update votes for each anecdote
     let votesCopy = [...votes];
     votesCopy[selected] += 1;
     setVotes(votesCopy);
   };
 
   const winner = () => {
+    // track which anecdote has the most votes
     let maxVotes = 0;
     let leader;
     votes.forEach((value, index) => {

@@ -4,16 +4,6 @@ const Button = (props) => (
   <button onClick={props.handleClick}>{props.text}</button>
 );
 
-/* const Buttons = (props) => {
-  return (
-    <>
-      <Button handleClick={() => setGood(good + 1)} text="Good" />
-      <Button handleClick={() => setNeutral(neutral + 1)} text="Neutral" />
-      <Button handleClick={() => setBad(bad + 1)} text="Bad" />
-    </>
-  );
-}; */
-
 const Statistic = (props) => {
   return (
     <tr>

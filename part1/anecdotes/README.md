@@ -7,8 +7,8 @@ It is a simple React.js app to randomly display a quote in response to a button 
 
 
 <p>
-  <kbd style="display:inline-block; width:35%; hspace: 20px; vertical-align: top;"  ><img src="./public/anecdotes_screenshot1.png"   alt="Anecdotes App Screenshot on loading"/></kbd>
-  <kbd style="display:inline-block; width:35%; hspace: 20px; vertical-align: top;" ><img src="./public/anecdotes_screenshot2.png"   alt="Anecdotes App Screenshot in use"/> </kbd>
+  <kbd style="display:inline-block; width:250px; hspace: 20px; vertical-align: top;"  ><img src="./public/anecdotes_screenshot1.png"   alt="Anecdotes App Screenshot on loading"/></kbd>
+  <kbd style="display:inline-block; width:250px; hspace: 20px; vertical-align: top;" ><img src="./public/anecdotes_screenshot2.png"   alt="Anecdotes App Screenshot in use"/> </kbd>
   </p>
 
 

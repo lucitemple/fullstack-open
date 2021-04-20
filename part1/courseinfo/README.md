@@ -5,4 +5,4 @@ This **courseinfo app** was created to meet the requirements of [1.1-1.2](https:
 This is a very basic React.js app to display data.
 
 
-  <img src="./public/courseinfo_screenshot.png" width="60%" hspace="20" style="vertical-align: top;" alt="Anecdotes App Screenshot on loading"/>
+  <img src="./public/courseinfo_screenshot.png" width="60%" hspace="20" style="vertical-align: top; border-style: solid;" alt="Anecdotes App Screenshot on loading"/>

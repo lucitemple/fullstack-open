@@ -1,20 +1,8 @@
 import React, { useState } from "react";
+import { Numbers } from "./components/Numbers";
+import { Filter } from "./components/Filter";
+import { AddContact } from "./components/AddContact";
 import { data } from "./data";
-
-const Numbers = ({ persons }) => {
-  return (
-    <>
-      <h2>Numbers</h2>
-      {persons.map((item) => {
-        return (
-          <p key={item.name}>
-            {item.name}: {item.number}
-          </p>
-        );
-      })}
-    </>
-  );
-};
 
 const App = () => {
   const [persons, setPersons] = useState(data);
@@ -50,37 +38,15 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <div>
-        filter by name:
-        <input onChange={onSearch} />
-        {filtered.map((item) => {
-          return (
-            <p key={item.name}>
-              {item.name}: {item.number}
-            </p>
-          );
-        })}
-      </div>
-      <h2>Add contacts</h2>
-      <form onSubmit={addName}>
-        <div>
-          name:{" "}
-          <input
-            value={newName}
-            onChange={(event) => handleChange(setNewName, event)}
-          />
-        </div>
-        <div>
-          number:
-          <input
-            value={newNumber}
-            onChange={(event) => handleChange(setNewNumber, event)}
-          />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+      <Filter onSearch={onSearch} persons={filtered} />
+      <AddContact
+        addName={addName}
+        newName={newName}
+        handleChange={handleChange}
+        setNewName={setNewName}
+        newNumber={newNumber}
+        setNewNumber={setNewNumber}
+      />
       <Numbers persons={persons} />
     </div>
   );

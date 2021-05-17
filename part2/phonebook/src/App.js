@@ -1,22 +1,41 @@
 import React, { useState } from "react";
+//import { data } from "./data";
+
+const Numbers = ({ newName, persons }) => {
+  return (
+    <>
+      <h2>Numbers</h2>
+      {persons.map((item) => {
+        return <p key={item.name}>{item.name}</p>;
+      })}
+    </>
+  );
+};
 
 const App = () => {
-  const [persons, setPersons] = useState([{ name: "Arto Hellas" }]);
+  const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
+
+  const handleChange = (event) => {
+    setNewName(event.target.value);
+  };
+
+  const addName = (event) => {
+    event.preventDefault();
+    setPersons(persons.concat({ name: newName }));
+    setNewName("");
+  };
 
   return (
     <div>
       <h2>Phonebook</h2>
-      <form>
-        <div>
-          name: <input />
-        </div>
+      <form onSubmit={addName}>
+        <input value={newName} onChange={handleChange} />
         <div>
           <button type="submit">add</button>
         </div>
       </form>
-      <h2>Numbers</h2>
-      <div>debug: {newName}</div>
+      <Numbers newName={newName} persons={persons} />
     </div>
   );
 };

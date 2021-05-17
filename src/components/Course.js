@@ -1,6 +1,7 @@
 import React from "react";
 import {Header} from "./Header";
 import {Content} from "./Content";
+import {Total} from "./Total";
 
 export const Course = ({name, parts}) => {
 
@@ -8,7 +9,7 @@ export const Course = ({name, parts}) => {
       <>
         <Header name={name} />
         <Content parts={parts} />
-        {/* <Total course={course} /> */}
+        <Total parts={parts} />
       </>
     );
 

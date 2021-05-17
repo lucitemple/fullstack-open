@@ -2,14 +2,6 @@ import React from 'react'
 //import Note from './components/Note'
 import {Course} from './components/Course';
 
-/* const Total = ({ course }) => {
-  const sum =
-    course.parts[0].exercises +
-    course.parts[1].exercises +
-    course.parts[2].exercises;
-  return <p>Number of exercises {sum}</p>;
-}; */
-
 const App = () => {
   const course = {
     id: 1,

@@ -1,0 +1,40 @@
+// image  https://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgMC40IFN1Ym1pdHRpbmcgYSBub3RlIGh0dHBzOi8vc3R1ZGllcy5jcy5oZWxzaW5raS5maS9leGFtcGxlYXBwL25vdGVzCgoAMQVvdmVyIGJyb3dzZXI6CmJ1dHRvbiBvbiB0aGUgZm9ybSBpcyBjbGlja2VkOwAgCCAKc2VuZHMgdXNlciBpbnB1dCB0bwAtBXNlcnZlcjsgZGF0YQAhBXQgYXMARwVib2R5IG9mAFMFUE9TVC1yZXF1ZXN0LgplbmQAgTwFCgoAgQAHLT4AQQY6IEhUVFAAKQUAgTEsZXdfAEkGAIFWCgBJBwoAgRkGIGNyZWF0ZXMgYSBuZXcAgjcGb2JqZWN0OyAKYWRkZWQgdG8gYXJyYXkgY2FsbGUAgRoGcwCBHwsAQhlpbnN0cnVjdHMAgiMJdG8gZG8gYSAKbmV3AIFLBkdFVCAAgXcHIHRvIACDCAcAgX0KAII_Bi0tPgCDDwgAggIGc3RhdHVzIGNvZGUgMzAyIHVybCByZWRpcmVjdACDNxYAgycHcmVsb2FkcyBOb3RlcyBwYWdlOwANByAKY2F1c2VzIHRocmVlIG1vcmUAgm4GAIMWB3M6AIJ9IUdFAIJxLG1haW4uY3NzAIFREwASCQAfSWoAThlqACBGZGF0YS5qc29uAIMgE1t7IGNvbnRlbnQ6ICJIVE1MIGlzIGVhc3kiLCBkYXRlOiAiMjAxOS0wNS0yMyIgfSwgLi4uXQCDKx1leGVjdXQAgykFZSBldmVudCBoYW5kbGVyIHRoYXQgCnJlbmRlcnMAhSgGIChpbmNsdWRpbmcAhV4JKQCFCQVpc3BsYXkAhm0L&s=default
+
+title 0.4 Submitting a note https://studies.cs.helsinki.fi/exampleapp/notes
+
+note over browser:
+button on the form is clicked; browser 
+sends user input to the server; data 
+sent as the body of the POST-request.
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+
+note over server:
+server creates a new note object; 
+added to array called notes
+end note
+
+note over server:
+server instructs browser to do a 
+new HTTP GET request to /notes
+end note
+
+server-->browser: HTTP status code 302 url redirect
+
+note over browser:
+browser reloads Notes page; reload 
+causes three more HTTP requests:
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+
+note over browser:
+browser executes the event handler that 
+renders notes (including new note) to display
+end note

@@ -1,0 +1,37 @@
+// diagram https://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgU1BBIG5ldyBub3RlCgpub3RlIG92ZXIgYnJvd3NlcjoKZmV0Y2hzIGZvcm0tZWxlbWVudCBmcm9tIHRoZSBwYWdlOwpyZWdpc3RlcnMgZXZlbnQgaGFuZGxlci4KZW5kAFMGAEUTc3VibWl0IGJ1dHRvbiBvbgBLBWZvcm0gaXMgY2xpY2tlZCAAJR0AYA0gY2FsbHMgZS5wcgCBAAVEZWZhdWx0KCk7CmNyZWF0ZXMgYQCBYAk7CmFkZHMAgW8FIHRvAIF3BXMgbGlzdDsgCnJlcmVuZGVycwCBXAUAggwFbGlzdACBGghwYWdlAIFOCgCCHRRKU09OIGRhdGEsIGNvbnRhaW5pbmcABgVlbnQKYW5kIGRhdGUsIHNlbnQgYXMgcGF5bG9hZACCIwsKAIJ2By0-c2VydmVyOiBIVFRQIFBPU1QgaHR0cHM6Ly9zdHVkaWVzLmNzLmhlbHNpbmtpLmZpL2V4YW1wbGVhcHAvbmV3X25vdGVfc3BhAINODABNBwoAVgYgcmVhZHMgQwCBGQYtVHlwZSBoZWFkZXIgAIEnBXBhcnNlcwCBSwUgYXMgAIFYBWZvcm1hdACBJQwARRkAgmIGAIRZByBvYmplY3QgdG8AghsFYmFzZTsAgkELAIFnBi0tPgCEdAggc3RhdHVzIGNvZGUgMjAxIACDRAZkIHsibWVzc2FnZSI6IgCFLgUAEgcifQ&s=default
+
+title SPA new note
+
+note over browser:
+fetchs form-element from the page;
+registers event handler.
+end note
+
+note over browser:
+submit button on the form is clicked 
+end note
+
+note over browser:
+event handler calls e.preventDefault();
+creates a new note;
+adds note to notes list; 
+rerenders the note list on the page
+end note
+
+note over browser:
+JSON data, containing content
+and date, sent as payload.
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+
+note over server:
+server reads Content-Type header 
+and parses data as JSON format.
+end note
+
+note over server:
+server adds new note object to database;
+end note
+
+server-->browser: status code 201 created {"message":"note created"}

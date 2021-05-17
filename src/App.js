@@ -1,5 +1,4 @@
 import React from "react";
-//import Note from './components/Note'
 import { Course } from "./components/Course";
 import { courses_2 as multicourse } from "./data";
 

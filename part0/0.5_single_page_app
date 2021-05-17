@@ -1,0 +1,23 @@
+// diagram https://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgTG9hZGluZyBzaW5nbGUgcGFnZSBhcHAKCmJyb3dzZXItPnNlcnZlcjogSFRUUCBHRVQgaHR0cHM6Ly9zdHVkaWVzLmNzLmhlbHNpbmtpLmZpL2V4YW1wbGVhcHAvc3BhCgA5Bi0tPgBKBzogc3BhIChodG1sIGNvZGUpACVFbWFpbi5jc3MAXBMAEgkAgQtHLmoAUhQAEgcKbm90ZSBvdmVyIACBaAgAgkIIIHN0YXJ0cyBleGVjdXRpbmcganMtY29kZQp0aGF0IHJlcXVlc3RzIEpTT04gZGF0YSBmcm9tIACCeQYgCmVuZCBub3RlAIJURmRhdGEuanNvbgCDDRNbeyBjb250ZW50OiAiSFRNTCBpcyBlYXN5IiwgZGF0ZTogIjIwMTktMDUtMjMiIH0sIC4uLl0AgV4dAIFuBmVzIHRoZSBldmVudCBoYW5kbGVyIACBeAUKcmVuZGVycwCBXQVzIChpbmNsdQCFEwVuZXcAgXIFKSB0byBkaXNwbGF5AIIDCQ&s=default
+
+title Loading single page app
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server-->browser: spa (html code)
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server-->browser: spa.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+
+note over browser:
+browser executes the event handler that 
+renders notes (including new note) to display
+end note

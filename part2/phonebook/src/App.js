@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Numbers } from "./components/Numbers";
 import { Filter } from "./components/Filter";
 import { AddContact } from "./components/AddContact";
-import { data } from "./data";
+import axios from "axios";
 
 const App = () => {
-  const [persons, setPersons] = useState(data);
+  const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [search, setSearch] = useState("");
   const [filtered, setFiltered] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/persons").then((response) => {
+      setPersons(response.data);
+    });
+  }, []);
 
   const handleChange = (func, e) => {
     func(e.target.value);

@@ -1,22 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./App.css";
+import { Results } from "./components/Results";
 
 function App() {
+  const [countries, setCountries] = useState([]);
+  const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    if (search !== "") {
+      axios
+        .get(`https://restcountries.eu/rest/v2/name/${search}`)
+        .then((response) => {
+          setCountries(response.data);
+        });
+    }
+  }, [search]);
+
+  const onSearch = (event) => {
+    setSearch(event.target.value.toLowerCase());
+
+        let filtering = countries.filter((country) => {
+      return country.name.toLowerCase().includes(search);
+    });
+    setResults(filtering);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          find countries <input onChange={onSearch} />
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Results results={results} />
       </header>
     </div>
   );

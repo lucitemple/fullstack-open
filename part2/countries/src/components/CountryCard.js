@@ -9,7 +9,7 @@ export const CountryCard = ({ result }) => {
       <h2>languages</h2>
       <ul>
         {result.languages.map((language) => (
-          <li key={language}>{language.name}</li>
+          <li key={language.name}>{language.name}</li>
         ))}
       </ul>
       <img src={result.flag} alt={`${result.name} flag`} />

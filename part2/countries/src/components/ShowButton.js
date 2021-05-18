@@ -1,7 +1,9 @@
-import React from 'react';
+import React from "react";
 
-export const ShowButton = () => {
-    return (
-        <button type="button">show</button>
-    )
-}
+export const ShowButton = ({ setResults, country }) => {
+  return (
+    <button type="button" onClick={() => setResults([country])}>
+      show
+    </button>
+  );
+};

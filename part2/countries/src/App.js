@@ -21,7 +21,7 @@ function App() {
   const onSearch = (event) => {
     setSearch(event.target.value.toLowerCase());
 
-        let filtering = countries.filter((country) => {
+    let filtering = countries.filter((country) => {
       return country.name.toLowerCase().includes(search);
     });
     setResults(filtering);
@@ -33,7 +33,7 @@ function App() {
         <p>
           find countries <input onChange={onSearch} />
         </p>
-        <Results results={results} />
+        <Results results={results} setResults={setResults} />
       </header>
     </div>
   );

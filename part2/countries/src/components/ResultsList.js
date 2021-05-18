@@ -1,12 +1,20 @@
 import React from "react";
-import {ShowButton} from "./ShowButton";
+import { ShowButton } from "./ShowButton";
 
-export const ResultsList = ({ tenResults }) => {
-
+export const ResultsList = ({ tenResults, setResults }) => {
   return (
     <>
       {tenResults.map((country) => {
-        return(<><p key={country.name}>{country.name}</p> <ShowButton key={`${country.name}Button`} /> </>);
+        return (
+          <div key={country.name}>
+            {country.name}
+            <ShowButton
+              key={`${country.name}Button`}
+              setResults={setResults}
+              country={country}
+            />
+          </div>
+        );
       })}
     </>
   );

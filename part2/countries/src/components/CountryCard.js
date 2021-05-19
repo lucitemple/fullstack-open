@@ -1,7 +1,7 @@
 import React from "react";
+import { Weather } from "../util/Weather";
 
 export const CountryCard = ({ result }) => {
-
   return (
     <>
       <h1>{result.name}</h1>
@@ -14,6 +14,7 @@ export const CountryCard = ({ result }) => {
         ))}
       </ul>
       <img src={result.flag} alt={`${result.name} flag`} />
+      <Weather capital={result.capital} />
     </>
   );
 };

@@ -13,10 +13,7 @@ export const Results = ({ results, setResults, weather }) => {
       {results.length < 1 ? (
         <p>No matches, please try again</p>
       ) : results.length === 1 ? (
-        <CountryCard
-          result={results[0]}
-          weather={weather}
-        />
+        <CountryCard result={results[0]} weather={weather} />
       ) : results.length > 10 ? (
         <p>Too many matches, please be more specific</p>
       ) : (

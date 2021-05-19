@@ -7,6 +7,7 @@ const apiUrl = "http://api.weatherstack.com/current";
 
 export const Weather = ({ capital }) => {
   const [weather, setWeather] = useState({});
+  const [display, setDisplay] = useState(false);
 
   useEffect(() => {
     axios
@@ -16,8 +17,11 @@ export const Weather = ({ capital }) => {
       .then((response) => {
         console.log(response.data);
         setWeather(response.data);
+        setDisplay(true);
       });
-  }, []);
+  }, [capital]);
 
-  return <>{weather !== {} && <WeatherCard weather={weather} />}</>;
+  if (display) {
+    return <WeatherCard weather={weather} />;
+  } else { return null}
 };

@@ -18,6 +18,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
+part2/countries/.env
 part2-notes/
 
 npm-debug.log*

@@ -16,14 +16,14 @@ const remove = (id) => {
   return request.then((response) => response.data);
 };
 
-/* const update = (id, newObject) => {
-  const request = axios.put(`${baseUrl}/${id}`, newObject);
+const update = (id, updatedContact) => {
+  const request = axios.put(`${baseUrl}/${id}`, updatedContact);
   return request.then((response) => response.data);
-}; */
+};
 
 export default {
   getAll,
   create,
   remove,
-  //update,
+  update,
 };

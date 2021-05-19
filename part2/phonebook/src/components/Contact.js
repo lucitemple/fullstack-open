@@ -1,13 +1,16 @@
 import React from "react";
 
-export const Contact = ({persons}) => {
+export const Contact = ({ persons, removeName }) => {
   return (
     <>
       {persons.map((item) => {
         return (
-          <p key={item.name}>
+          <div key={item.name}>
             {item.name}: {item.number}
-          </p>
+            <button value={item.id} name={item.name} onClick={removeName}>
+              delete
+            </button>
+          </div>
         );
       })}
     </>

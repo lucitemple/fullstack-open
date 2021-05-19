@@ -15,7 +15,7 @@ const App = () => {
     contactsService.getAll().then((initialContacts) => {
       setPersons(initialContacts);
     });
-  }, []);
+  }, [persons]);
 
   const handleChange = (func, e) => {
     func(e.target.value);
@@ -33,6 +33,17 @@ const App = () => {
     }
     setNewName("");
     setNewNumber("");
+  };
+
+  const removeName = (event) => {
+    if (
+      window.confirm(
+        `Do you really want to delete ${event.target.name} from the database?`
+      )
+    ) {
+      contactsService.remove(event.target.value);
+      setPersons(persons.filter((person) => person.id !== event.target.value));
+    }
   };
 
   const onSearch = (event) => {
@@ -56,7 +67,7 @@ const App = () => {
         newNumber={newNumber}
         setNewNumber={setNewNumber}
       />
-      <Numbers persons={persons} />
+      <Numbers persons={persons} removeName={removeName} />
     </div>
   );
 };

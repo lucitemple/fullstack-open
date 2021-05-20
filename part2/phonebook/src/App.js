@@ -23,8 +23,8 @@ const App = () => {
     func(e.target.value);
   };
 
-  const giveNotification = ({action, prop}) => {
-    setNotification(`${action} ${prop} to the phonebook.`);
+  const giveNotification = (prop) => {
+    setNotification(`${prop} the phonebook.`);
     setTimeout(() => {
       setNotification(null);
     }, 5000);
@@ -41,13 +41,13 @@ const App = () => {
         const contact = persons.find((p) => p.name === newName);
         let updatedContact = { name: newName, number: newNumber };
         contactsService.update(contact.id, updatedContact);
-        giveNotification("Updated", updatedContact);
+        giveNotification(`Updated ${newName} in `);
       } else return;
     } else {
       const newContact = { name: newName, number: newNumber };
       contactsService.create(newContact).then((returnedContact) => {
         setPersons(persons.concat(returnedContact));
-        giveNotification("Added", returnedContact);
+        giveNotification(`Added ${newName} to `);
       });
     }
 
@@ -61,9 +61,9 @@ const App = () => {
         `Do you really want to delete ${event.target.name} from the database?`
       )
     ) {
+      
       contactsService.remove(event.target.value);
-      setPersons(persons.filter((person) => person.id !== event.target.value));
-      giveNotification("Deleted", event.target);
+      giveNotification(`Deleted ${event.target.name} from `);
     }
   };
 

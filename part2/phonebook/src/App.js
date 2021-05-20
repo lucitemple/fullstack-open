@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Numbers } from "./components/Numbers";
 import { Filter } from "./components/Filter";
 import { AddContact } from "./components/AddContact";
+import { Notification } from "./components/Notification";
 import contactsService from "./services/contacts";
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
   const [newNumber, setNewNumber] = useState("");
   const [search, setSearch] = useState("");
   const [filtered, setFiltered] = useState([]);
+  const [notification, setNotification] = useState(null);
 
   useEffect(() => {
     contactsService.getAll().then((initialContacts) => {
@@ -19,6 +21,13 @@ const App = () => {
 
   const handleChange = (func, e) => {
     func(e.target.value);
+  };
+
+  const giveNotification = ({action, prop}) => {
+    setNotification(`${action} ${prop} to the phonebook.`);
+    setTimeout(() => {
+      setNotification(null);
+    }, 5000);
   };
 
   const addName = (event) => {
@@ -32,13 +41,16 @@ const App = () => {
         const contact = persons.find((p) => p.name === newName);
         let updatedContact = { name: newName, number: newNumber };
         contactsService.update(contact.id, updatedContact);
-      }
+        giveNotification("Updated", updatedContact);
+      } else return;
     } else {
       const newContact = { name: newName, number: newNumber };
       contactsService.create(newContact).then((returnedContact) => {
         setPersons(persons.concat(returnedContact));
+        giveNotification("Added", returnedContact);
       });
     }
+
     setNewName("");
     setNewNumber("");
   };
@@ -51,6 +63,7 @@ const App = () => {
     ) {
       contactsService.remove(event.target.value);
       setPersons(persons.filter((person) => person.id !== event.target.value));
+      giveNotification("Deleted", event.target);
     }
   };
 
@@ -66,6 +79,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification notification={notification} />
       <Filter onSearch={onSearch} persons={filtered} />
       <AddContact
         addName={addName}

@@ -40,9 +40,19 @@ const App = () => {
       ) {
         const contact = persons.find((p) => p.name === newName);
         let updatedContact = { name: newName, number: newNumber };
-        contactsService.update(contact.id, updatedContact);
-        giveNotification(`Updated ${newName} in `);
-      } else return;
+
+        contactsService
+          .update(contact.id, updatedContact)
+          .then(() => {
+            giveNotification(`Updated ${newName} in `);
+          })
+          .catch((error) => {
+            giveNotification(
+              `Information of ${event.target.name} has already been removed from `
+            );
+            setPersons(persons.filter((p) => p.id !== event.target.value));
+          });
+      }
     } else {
       const newContact = { name: newName, number: newNumber };
       contactsService.create(newContact).then((returnedContact) => {
@@ -61,9 +71,18 @@ const App = () => {
         `Do you really want to delete ${event.target.name} from the database?`
       )
     ) {
-      
-      contactsService.remove(event.target.value);
-      giveNotification(`Deleted ${event.target.name} from `);
+      contactsService
+        .remove(event.target.value)
+        .then(() => {
+          giveNotification(`Deleted ${event.target.name} from `);
+          setPersons(persons.filter((p) => p.id !== event.target.value));
+        })
+        .catch((error) => {
+          giveNotification(
+            `Information of ${event.target.name} has already been removed from `
+          );
+          setPersons(persons.filter((p) => p.id !== event.target.value));
+        });
     }
   };
 

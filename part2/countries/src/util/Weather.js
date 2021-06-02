@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { WeatherCard } from "../components/WeatherCard";
 
-const api_key = `${process.env.REACT_APP_WEATHERSTACK_API_KEY}`;
+const api_key = process.env.REACT_APP_WEATHERSTACK_API_KEY;
 
 export const Weather = ({ capital }) => {
   const [weather, setWeather] = useState({});

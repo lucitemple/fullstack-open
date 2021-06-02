@@ -3,7 +3,7 @@ import "../App.css";
 import { CountryCard } from "./CountryCard";
 import { ResultsList } from "./ResultsList";
 
-export const Results = ({ results, setResults, weather }) => {
+export const Results = ({ results, setResults }) => {
   let tenResults = [];
   if (results.length > 1) {
     tenResults = results.slice(0, 10);

@@ -29,12 +29,10 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          find countries <input onChange={onSearch} />
-        </p>
-        <Results results={results} setResults={setResults} />
-      </header>
+      <h1>
+        Find countries <input onChange={onSearch} />
+      </h1>
+      {search !== "" && <Results results={results} setResults={setResults} />}
     </div>
   );
 }

@@ -9,8 +9,6 @@ export const Weather = ({ capital }) => {
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
-    console.log(api_key);
-    console.log(capital);
     const apiUrl = `http://api.weatherstack.com/current?access_key=${api_key}&query=${capital}`;
 
     axios.get(apiUrl).then((response) => {

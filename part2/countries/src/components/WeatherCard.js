@@ -1,10 +1,9 @@
 import React from "react";
 
 export const WeatherCard = ({ weather }) => {
-  console.log(weather);
   return (
     <>
-      <h2>Weather in {weather.location.name}</h2>
+      <h3>Weather in {weather.location.name}</h3>
       <p>Temperature: {weather.current.temperature}°C</p>
       <img
         src={weather.current.weather_icons[0]}

@@ -6,34 +6,9 @@
       "id": 2
     },
     {
-      "name": "Luci Temple",
-      "number": "8888888",
-      "id": 3
-    },
-    {
-      "name": "Ben",
-      "number": "77777",
+      "name": "Tim",
+      "number": "444444",
       "id": 4
-    },
-    {
-      "name": "Mary",
-      "number": "9999",
-      "id": 5
-    },
-    {
-      "name": "John",
-      "number": "11111",
-      "id": 6
-    },
-    {
-      "name": "Test",
-      "number": "3333",
-      "id": 7
-    },
-    {
-      "name": "Hello",
-      "number": "8888",
-      "id": 8
     }
   ]
 }

@@ -23,10 +23,8 @@ const App = () => {
     func(e.target.value);
   };
 
-  const giveNotification = ({notification}) => {
-    console.log(notification);
+  const giveNotification = (notification) => {
     setNotification(notification);
-    console.log(notification);
     setTimeout(() => {
       setNotification(null);
     }, 5000);
@@ -75,12 +73,12 @@ const App = () => {
       contactsService
         .remove(event.target.value)
         .then(() => {
-          giveNotification({status: `success`, message: `Deleted ${event.target.name} from the phonebook.`});
+          giveNotification({status: "success", message: `Deleted ${event.target.name} from the phonebook.`});
           setPersons(persons.filter((p) => p.id !== event.target.value));
         })
         .catch((error) => {
           giveNotification({
-            error: `Information of ${event.target.name} has already been removed from the server.`,
+            status: "error", message: `Information of ${event.target.name} has already been removed from the server.`,
           });
           setPersons(persons.filter((p) => p.id !== event.target.value));
         });
@@ -100,7 +98,7 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
       <Notification notification={notification} />
-      <Filter onSearch={onSearch} persons={filtered} />
+      <Filter onSearch={onSearch} persons={filtered} removeName={removeName} />
       <AddContact
         addName={addName}
         newName={newName}

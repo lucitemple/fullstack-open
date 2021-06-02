@@ -1,10 +1,10 @@
 import React from "react";
 
-export const Notification = (notification) => {
+export const Notification = ({notification}) => {
     //console.log(notification);
   if (notification === null) {
     return null;
   }
 
-  return <div className={notification.status}>{notification.messasge}</div>;
+  return <div className={notification.status}>{notification.message}</div>;
 };

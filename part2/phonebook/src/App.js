@@ -43,9 +43,9 @@ const App = () => {
 
         contactsService
           .update(contact.id, updatedContact)
-          .then(() => {
+          .then((returnedContact) => {
             setPersons(
-              persons.map((p) => (p.id !== contact.id ? p : updatedContact))
+              persons.map((p) => (p.id !== contact.id ? p : returnedContact))
             );
             giveNotification({
               status: `success`,
@@ -63,6 +63,7 @@ const App = () => {
     } else {
       const newContact = { name: newName, number: newNumber };
       contactsService.create(newContact).then((returnedContact) => {
+        console.log(returnedContact);
         setPersons(persons.concat(returnedContact));
         giveNotification({
           status: `success`,

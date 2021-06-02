@@ -17,14 +17,16 @@ const App = () => {
     contactsService.getAll().then((initialContacts) => {
       setPersons(initialContacts);
     });
-  }, [persons]);
+  }, []);
 
   const handleChange = (func, e) => {
     func(e.target.value);
   };
 
-  const giveNotification = (prop) => {
-    setNotification(`${prop} the phonebook.`);
+  const giveNotification = ({notification}) => {
+    console.log(notification);
+    setNotification(notification);
+    console.log(notification);
     setTimeout(() => {
       setNotification(null);
     }, 5000);
@@ -44,12 +46,11 @@ const App = () => {
         contactsService
           .update(contact.id, updatedContact)
           .then(() => {
-            giveNotification(`Updated ${newName} in `);
+            giveNotification({status: `success`, message: `Updated ${newName} in the phonebook.`});
           })
           .catch((error) => {
-            giveNotification(
-              `Information of ${event.target.name} has already been removed from `
-            );
+            giveNotification({error: `Information of ${event.target.name} has already been removed from the server.`
+          });
             setPersons(persons.filter((p) => p.id !== event.target.value));
           });
       }
@@ -57,7 +58,7 @@ const App = () => {
       const newContact = { name: newName, number: newNumber };
       contactsService.create(newContact).then((returnedContact) => {
         setPersons(persons.concat(returnedContact));
-        giveNotification(`Added ${newName} to `);
+        giveNotification({status: `success`, message: `Added ${newName} to the phonebook.`});
       });
     }
 
@@ -74,13 +75,13 @@ const App = () => {
       contactsService
         .remove(event.target.value)
         .then(() => {
-          giveNotification(`Deleted ${event.target.name} from `);
+          giveNotification({status: `success`, message: `Deleted ${event.target.name} from the phonebook.`});
           setPersons(persons.filter((p) => p.id !== event.target.value));
         })
         .catch((error) => {
-          giveNotification(
-            `Information of ${event.target.name} has already been removed from `
-          );
+          giveNotification({
+            error: `Information of ${event.target.name} has already been removed from the server.`,
+          });
           setPersons(persons.filter((p) => p.id !== event.target.value));
         });
     }

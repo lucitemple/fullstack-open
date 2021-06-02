@@ -20,10 +20,10 @@ const update = (id, updatedContact) => {
   const request = axios.put(`${baseUrl}/${id}`, updatedContact);
   return request.then((response) => response.data);
 };
-
-export default {
+const contactsService = {
   getAll,
   create,
   remove,
   update,
 };
+export default contactsService;

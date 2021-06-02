@@ -1,6 +1,7 @@
 import React from "react";
 
 export const WeatherCard = ({ weather }) => {
+  console.log(weather);
   return (
     <>
       <h2>Weather in {weather.location.name}</h2>

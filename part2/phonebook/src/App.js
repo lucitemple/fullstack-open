@@ -43,20 +43,29 @@ const App = () => {
 
         contactsService
           .update(contact.id, updatedContact)
-          .then(() => {
-            giveNotification({status: `success`, message: `Updated ${newName} in the phonebook.`});
+          .then(() => {           
+            setPersons(persons.map((p) => p.id !== contact.id? p : updatedContact));
+            giveNotification({
+              status: `success`,
+              message: `Updated ${newName} in the phonebook.`,
+            });
           })
           .catch((error) => {
-            giveNotification({error: `Information of ${event.target.name} has already been removed from the server.`
-          });
+            giveNotification({
+              error: `Information of ${event.target.name} has already been removed from the server.`,
+            });
             setPersons(persons.filter((p) => p.id !== event.target.value));
           });
+          
       }
     } else {
       const newContact = { name: newName, number: newNumber };
       contactsService.create(newContact).then((returnedContact) => {
         setPersons(persons.concat(returnedContact));
-        giveNotification({status: `success`, message: `Added ${newName} to the phonebook.`});
+        giveNotification({
+          status: `success`,
+          message: `Added ${newName} to the phonebook.`,
+        });
       });
     }
 
@@ -67,20 +76,24 @@ const App = () => {
   const removeName = (event) => {
     if (
       window.confirm(
-        `Do you really want to delete ${event.target.name} from the database?`
+        `Do you really want to delete ${event.name} from the database?`
       )
     ) {
       contactsService
-        .remove(event.target.value)
+        .remove(event.id)
         .then(() => {
-          giveNotification({status: "success", message: `Deleted ${event.target.name} from the phonebook.`});
-          setPersons(persons.filter((p) => p.id !== event.target.value));
+          setPersons(persons.filter((p) => p.id !== event.id));
+          giveNotification({
+            status: "success",
+            message: `Deleted ${event.name} from the phonebook.`,
+          });
         })
         .catch((error) => {
+          setPersons(persons.filter((p) => p.id !== event.id));
           giveNotification({
-            status: "error", message: `Information of ${event.target.name} has already been removed from the server.`,
+            status: "error",
+            message: `Information of ${event.name} has already been removed from the server.`,
           });
-          setPersons(persons.filter((p) => p.id !== event.target.value));
         });
     }
   };

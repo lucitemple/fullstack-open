@@ -43,8 +43,10 @@ const App = () => {
 
         contactsService
           .update(contact.id, updatedContact)
-          .then(() => {           
-            setPersons(persons.map((p) => p.id !== contact.id? p : updatedContact));
+          .then(() => {
+            setPersons(
+              persons.map((p) => (p.id !== contact.id ? p : updatedContact))
+            );
             giveNotification({
               status: `success`,
               message: `Updated ${newName} in the phonebook.`,
@@ -52,11 +54,11 @@ const App = () => {
           })
           .catch((error) => {
             giveNotification({
-              error: `Information of ${event.target.name} has already been removed from the server.`,
+              status: "error",
+              message: `Information of ${contact.name} has already been removed from the server.`,
             });
-            setPersons(persons.filter((p) => p.id !== event.target.value));
+            setPersons(persons.filter((p) => p.id !== contact.id));
           });
-          
       }
     } else {
       const newContact = { name: newName, number: newNumber };
@@ -82,18 +84,18 @@ const App = () => {
       contactsService
         .remove(event.id)
         .then(() => {
-          setPersons(persons.filter((p) => p.id !== event.id));
           giveNotification({
             status: "success",
             message: `Deleted ${event.name} from the phonebook.`,
           });
+          setPersons(persons.filter((p) => p.id !== event.id));
         })
         .catch((error) => {
-          setPersons(persons.filter((p) => p.id !== event.id));
           giveNotification({
             status: "error",
             message: `Information of ${event.name} has already been removed from the server.`,
           });
+          setPersons(persons.filter((p) => p.id !== event.id));
         });
     }
   };

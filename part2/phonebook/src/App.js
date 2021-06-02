@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Numbers } from "./components/Numbers";
 import { Filter } from "./components/Filter";
 import { AddContact } from "./components/AddContact";
+import { Notification } from "./components/Notification";
 import contactsService from "./services/contacts";
 
 const App = () => {
@@ -10,15 +11,23 @@ const App = () => {
   const [newNumber, setNewNumber] = useState("");
   const [search, setSearch] = useState("");
   const [filtered, setFiltered] = useState([]);
+  const [notification, setNotification] = useState(null);
 
   useEffect(() => {
     contactsService.getAll().then((initialContacts) => {
       setPersons(initialContacts);
     });
-  }, [persons]);
+  }, []);
 
   const handleChange = (func, e) => {
     func(e.target.value);
+  };
+
+  const giveNotification = (notification) => {
+    setNotification(notification);
+    setTimeout(() => {
+      setNotification(null);
+    }, 5000);
   };
 
   const addName = (event) => {
@@ -31,14 +40,38 @@ const App = () => {
       ) {
         const contact = persons.find((p) => p.name === newName);
         let updatedContact = { name: newName, number: newNumber };
-        contactsService.update(contact.id, updatedContact);
+
+        contactsService
+          .update(contact.id, updatedContact)
+          .then((returnedContact) => {
+            setPersons(
+              persons.map((p) => (p.id !== contact.id ? p : returnedContact))
+            );
+            giveNotification({
+              status: `success`,
+              message: `Updated ${newName} in the phonebook.`,
+            });
+          })
+          .catch((error) => {
+            giveNotification({
+              status: "error",
+              message: `Information of ${contact.name} has already been removed from the server.`,
+            });
+            setPersons(persons.filter((p) => p.id !== contact.id));
+          });
       }
     } else {
       const newContact = { name: newName, number: newNumber };
       contactsService.create(newContact).then((returnedContact) => {
+        console.log(returnedContact);
         setPersons(persons.concat(returnedContact));
+        giveNotification({
+          status: `success`,
+          message: `Added ${newName} to the phonebook.`,
+        });
       });
     }
+
     setNewName("");
     setNewNumber("");
   };
@@ -46,11 +79,25 @@ const App = () => {
   const removeName = (event) => {
     if (
       window.confirm(
-        `Do you really want to delete ${event.target.name} from the database?`
+        `Do you really want to delete ${event.name} from the database?`
       )
     ) {
-      contactsService.remove(event.target.value);
-      setPersons(persons.filter((person) => person.id !== event.target.value));
+      contactsService
+        .remove(event.id)
+        .then(() => {
+          giveNotification({
+            status: "success",
+            message: `Deleted ${event.name} from the phonebook.`,
+          });
+          setPersons(persons.filter((p) => p.id !== event.id));
+        })
+        .catch((error) => {
+          giveNotification({
+            status: "error",
+            message: `Information of ${event.name} has already been removed from the server.`,
+          });
+          setPersons(persons.filter((p) => p.id !== event.id));
+        });
     }
   };
 
@@ -66,7 +113,8 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Filter onSearch={onSearch} persons={filtered} />
+      <Notification notification={notification} />
+      <Filter onSearch={onSearch} persons={filtered} removeName={removeName} />
       <AddContact
         addName={addName}
         newName={newName}

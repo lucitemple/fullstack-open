@@ -7,7 +7,7 @@ export const Contact = ({ persons, removeName }) => {
         return (
           <div key={item.name}>
             {item.name}: {item.number}
-            <button value={item.id} name={item.name} onClick={removeName}>
+            <button value={item.id} name={item.name} onClick={() => removeName(item)}>
               delete
             </button>
           </div>

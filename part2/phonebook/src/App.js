@@ -4,6 +4,7 @@ import { Filter } from "./components/Filter";
 import { AddContact } from "./components/AddContact";
 import { Notification } from "./components/Notification";
 import contactsService from "./services/contacts";
+import "./App.css";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -111,7 +112,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="App">
       <h2>Phonebook</h2>
       <Notification notification={notification} />
       <Filter onSearch={onSearch} persons={filtered} removeName={removeName} />

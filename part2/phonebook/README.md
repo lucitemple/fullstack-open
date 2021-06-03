@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Phonebook App [FullStack Open]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This **phonebook app** was created to meet the requirements of [FullStackOpen](https://fullstackopen.com/en/):
+- [2.6-2.10](https://fullstackopen.com/en/part2/forms#exercises-2-6-2-10)
+- [2.11](https://fullstackopen.com/en/part2/getting_data_from_server#exercises-2-11-2-14)
+- [2.15-2.18](https://fullstackopen.com/en/part2/altering_data_in_server#exercises-2-15-2-18)
+- [2.19-2.20](https://fullstackopen.com/en/part2/adding_styles_to_react_app#exercises-2-19-2-20)
 
-## Available Scripts
+This is a simple CRUD React.js app that allows a user to:
 
-In the project directory, you can run:
+- Create a contact by adding a name and phone number to the database 
+- View existing contacts in the database
+- Search for existing contacts
+- Delete a contact, after confirmation.
+- If an existing contact is "added" with a new number, the contact's number is updated in the database (after confirmation).
+- Notification messages on success or failure of an action. 
 
-### `npm start`
+<kbd style="display:inline-block; width:250px; hspace: 20px; vertical-align: top;"  >
+  <img src="./public/screenshot_match.png" alt="Countries app screenshot"/>
+  </kbd>
+  <kbd style="display:inline-block; width:250px; hspace: 20px; verrtical-align: top;"  >
+  <img src="./public/screenshot_matches.png" alt="Countries list screenshot"/>
+  <img src="./public/screenshot_no_matches.png" alt="No matches screenshot"/>
+  <img src="./public/screenshot_too_many_matches.png" alt="Too many matches screenshot"/>
+  </kbd>
 
-Runs the app in the development mode.\
+## Technologies used
+
+- json-server is used to manage data.
+- Axios is a dependency to manage promises when handling data with the database.
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- React.js functional components and hooks are used.
+
+## How to run the app
+
+In the project directory, ensure npm is installed, and then run:
+`npm run server`
+
+In a second terminal, in the project directory, run:
+`npm start`
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

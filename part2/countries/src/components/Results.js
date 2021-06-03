@@ -6,7 +6,7 @@ import { ResultsList } from "./ResultsList";
 export const Results = ({ results, setResults }) => {
   let tenResults = [];
   if (results.length > 1) {
-    tenResults = results.slice(0, 10);
+    tenResults = results.slice(0, 11);
   }
   return (
     <>

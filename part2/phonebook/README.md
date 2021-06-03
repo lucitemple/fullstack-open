@@ -16,12 +16,15 @@ This is a simple CRUD React.js app that allows a user to:
 - Notification messages on success or failure of an action. 
 
 <kbd style="display:inline-block; width:250px; hspace: 20px; vertical-align: top;"  >
-  <img src="./public/screenshot_match.png" alt="Countries app screenshot"/>
+  <img src="./public/screenshot_on_load.png" alt="Phonebook app screenshot"/>
+   <img src="./public/screenshot_add_contact_success.png" alt="Screenshot: add contact success"/>
+  <img src="./public/screenshot_update_notification.png" alt="Screenshot: update confirmation notification"/>
+  <img src="./public/screenshot_update_success.png" alt="Screenshot: contact update success"/>
   </kbd>
   <kbd style="display:inline-block; width:250px; hspace: 20px; verrtical-align: top;"  >
-  <img src="./public/screenshot_matches.png" alt="Countries list screenshot"/>
-  <img src="./public/screenshot_no_matches.png" alt="No matches screenshot"/>
-  <img src="./public/screenshot_too_many_matches.png" alt="Too many matches screenshot"/>
+   <img src="./public/screenshot_delete_notification.png" alt="Screenshot: contact update success"/>
+    <img src="./public/screenshot_delete_success.png" alt="Screenshot: contact update success"/>
+    <img src="./public/screenshot_search.png" alt="Screenshot: search function"/>
   </kbd>
 
 ## Technologies used

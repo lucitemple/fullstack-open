@@ -5,6 +5,7 @@ export const Notification = ({notification}) => {
   if (notification === null) {
     return null;
   }
+  console.log(notification.status);
 
   return <div className={notification.status}>{notification.message}</div>;
 };

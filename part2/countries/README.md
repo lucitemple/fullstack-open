@@ -9,13 +9,13 @@ This is a simple React.js app that allows a user to:
 - View country data (capital, population, spoken languages).
 - View the current weather in the country's capital.
 
-<kbd style="display:inline-block; width:150px; hspace: 20px; vertical-align: top;"  >
-  <img src="./public/screenshot_match.png" alt="Countries app screenshot"/>
+<kbd style="display:inline-block; hspace: 20px; vertical-align: top;"  >
+  <img src="./public/screenshot_match.png" alt="Countries app screenshot" width="400"/>
   </kbd>
-  <kbd style="display:inline-block; width:150px; hspace: 20px; vertical-align: top;"  >
-  <img src="./public/screenshot_matches.png" alt="Countries list screenshot"/>
-  <img src="./public/screenshot_no_matches.png" alt="No matches screenshot"/>
-  <img src="./public/screenshot_too_many_matches.png" alt="Too many matches screenshot"/>
+  <kbd style="display:inline-block; hspace: 20px; vertical-align: top;"  >
+  <img src="./public/screenshot_matches.png" alt="Countries list screenshot" width="200"/>
+  <img src="./public/screenshot_no_matches.png" alt="No matches screenshot" width="200"/>
+  <img src="./public/screenshot_too_many_matches.png" alt="Too many matches screenshot" width="200"/>
   </kbd>
 
 ## Technologies used

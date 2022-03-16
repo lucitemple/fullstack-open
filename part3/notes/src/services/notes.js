@@ -1,5 +1,9 @@
 import axios from "axios";
-const baseUrl = "http://localhost:3001/api/notes";
+// if running with local json-server, use this:
+// const baseUrl = "http://localhost:3001/api/notes";
+
+// when hosted on heroku, use this:
+const baseUrl = "https://notes-simple-server.herokuapp.com/api/notes";
 
 const getAll = () => {
   const request = axios.get(baseUrl);

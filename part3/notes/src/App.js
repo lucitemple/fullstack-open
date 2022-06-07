@@ -1,8 +1,8 @@
-import "./App.css";
 import { useState, useEffect } from "react";
+
+import "./App.css";
 import noteService from "./services/notes";
 import Notification from "./components/Notification";
-
 import Note from "./components/Note";
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
       content: newNote,
       date: new Date().toISOString(),
       important: Math.random() < 0.5,
+      id: notes.length + 1,
     };
 
     noteService.create(noteObject).then((returnedNote) => {
@@ -43,7 +44,7 @@ function App() {
       })
       .catch((error) => {
         setErrorMessage(
-          `Note '${note.content}' was already deleted from server`
+          `Note '${note.content}' could not be found. May have been deleted from the server.`
         );
         setTimeout(() => {
           setErrorMessage(null);
